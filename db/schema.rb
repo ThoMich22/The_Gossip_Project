@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_210558) do
+ActiveRecord::Schema.define(version: 2021_05_07_065015) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 2021_05_06_210558) do
     t.datetime "updated_at", null: false
     t.index ["gossip_id"], name: "index_join_table_gossip_tags_on_gossip_id"
     t.index ["tag_id"], name: "index_join_table_gossip_tags_on_tag_id"
+  end
+
+  create_table "private_messages", force: :cascade do |t|
+    t.text "private_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
