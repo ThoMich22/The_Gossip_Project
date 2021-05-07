@@ -9,16 +9,18 @@
 require 'faker'
 
 
-
-
-10.times do
-    #c = City.all.sample
-    user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Hipster.sentence, email: Faker::Internet.email, age: Faker::Number.between(from: 18, to: 100))
-end
-
 10.times do
     city = City.create!(name: Faker::Address.city, zip_code: Faker::Lorem.characters(number: 10, min_alpha: 4))
 end
+
+10.times do
+    cities_list = City.all
+    user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Hipster.sentence, email: Faker::Internet.email, age: Faker::Number.between(from: 18, to: 100), city: cities_list.sample)
+end
+
+# 10.times do
+#     city = City.create!(name: Faker::Address.city, zip_code: Faker::Lorem.characters(number: 10, min_alpha: 4))
+# end
 
 10.times do
     tag = Tag.create!(title: Faker::Color.color_name)
